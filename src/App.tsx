@@ -1,7 +1,7 @@
-import { CharacterList } from './components/CharacterList'
+import { CharacterScreen } from './screens/CharacterScreen'
 
 function App() {
-  return <CharacterList />
+  return <CharacterScreen />
 }
 
 export default App

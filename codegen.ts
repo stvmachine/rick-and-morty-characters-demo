@@ -8,16 +8,13 @@ const config: CodegenConfig = {
       plugins: [
         'typescript',
         'typescript-operations',
-        'typescript-react-apollo',
+        'typed-document-node',
       ],
       config: {
-        withHooks: true,
-        withComponent: false,
-        withHOC: false,
+        enumsAsTypes: true,
       },
     },
   },
 }
 
 export default config
-

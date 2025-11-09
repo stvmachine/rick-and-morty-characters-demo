@@ -10,20 +10,22 @@ We need to fetch and display characters from the Rick & Morty GraphQL API. The r
 We will use GraphQL Code Generator (`@graphql-codegen/cli`) with the following plugins:
 - `@graphql-codegen/typescript` - Generates base TypeScript types from the GraphQL schema
 - `@graphql-codegen/typescript-operations` - Generates types for queries, mutations, and fragments
-- `@graphql-codegen/typescript-react-apollo` - Generates React hooks for Apollo Client
+- `@graphql-codegen/typed-document-node` - Generates TypedDocumentNode for Apollo Client v4
 
 This approach provides:
 - Automatic type generation from GraphQL schema and queries
-- Type-safe React hooks for data fetching
+- TypedDocumentNode support for Apollo Client v4 (recommended approach)
+- Type-safe queries when used with Apollo Client's `useQuery` hook
 - Reduced boilerplate and manual type definitions
 - Compile-time validation of queries
 
 ## Consequences
 ### Positive
 - Full type safety for GraphQL operations
-- Auto-generated React hooks reduce boilerplate
+- TypedDocumentNode works seamlessly with Apollo Client v4
 - Compile-time errors catch query mistakes early
 - Single source of truth (GraphQL schema)
+- Better type inference than generated hooks in Apollo Client v4
 
 ### Negative
 - Additional build step required (codegen)
@@ -32,6 +34,7 @@ This approach provides:
 
 ## Alternatives Considered
 1. **Manual TypeScript interfaces** - Too much boilerplate and error-prone
-2. **GraphQL Code Generator with different plugins** - Current selection provides best Apollo Client integration
-3. **Other GraphQL clients** - Apollo Client is well-established and has excellent codegen support
+2. **GraphQL Code Generator with `typescript-react-apollo` plugin** - Generated hooks have compatibility issues with Apollo Client v4 and lack proper type inference
+3. **TypedDocumentNode approach** - Selected as it's the recommended approach for Apollo Client v4, providing better type safety and inference
+4. **Other GraphQL clients** - Apollo Client is well-established and has excellent codegen support
 

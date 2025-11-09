@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useGetCharactersQuery } from '@/generated/graphql'
+import { useQuery } from '@apollo/client/react'
+import { GetCharactersDocument, type GetCharactersQuery } from '@/generated/graphql'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -14,7 +15,7 @@ import {
 
 export function CharacterList() {
   const [page, setPage] = useState(1)
-  const { data, loading, error } = useGetCharactersQuery({
+  const { data, loading, error } = useQuery(GetCharactersDocument, {
     variables: { page },
   })
 
@@ -60,10 +61,15 @@ export function CharacterList() {
     )
   }
 
-  const characters = data?.characters?.results?.filter(
-    (character): character is NonNullable<typeof character> =>
-      character !== null
-  ) || []
+  type Character = NonNullable<
+    NonNullable<GetCharactersQuery['characters']>['results']
+  >[number]
+
+  const characters =
+    data?.characters?.results?.filter(
+      (character): character is NonNullable<Character> =>
+        character !== null && character !== undefined
+    ) || []
   const info = data?.characters?.info
   const totalPages = info?.pages || 1
   const currentPage = page

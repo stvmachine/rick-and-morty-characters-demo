@@ -1,3 +1,4 @@
+import { CharacterCard } from "@/components/CharacterCard";
 import { PaginationControls } from "@/components/PaginationControls";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -71,25 +72,7 @@ export function CharacterList() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-6">
         {characters.map((character) => (
-          <Card key={character.id}>
-            <CardHeader>
-              {character.image && (
-                <img
-                  src={character.image}
-                  alt={character.name || "Unknown"}
-                  className="w-full h-48 object-cover rounded-t-lg"
-                />
-              )}
-            </CardHeader>
-            <CardContent>
-              <CardTitle className="mb-2">
-                {character.name || "Unknown"}
-              </CardTitle>
-              <p className="text-sm text-muted-foreground">
-                {character.species || "Unknown species"}
-              </p>
-            </CardContent>
-          </Card>
+          <CharacterCard key={character.id} character={character} />
         ))}
       </div>
 

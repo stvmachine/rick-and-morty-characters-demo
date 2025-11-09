@@ -52,6 +52,8 @@ pnpm dev
 - `pnpm preview` - Preview production build
 - `pnpm lint` - Run ESLint
 - `pnpm codegen` - Generate TypeScript types from GraphQL schema
+- `pnpm storybook` - Start Storybook development server
+- `pnpm build-storybook` - Build static Storybook for deployment
 
 ## Project Structure
 
@@ -70,8 +72,25 @@ src/
 
 This app uses the [Rick and Morty GraphQL API](https://rickandmortyapi.com/graphql).
 
+## Storybook
+
+This project uses Storybook for component development and documentation. All components have stories that can be viewed in isolation.
+
+To start Storybook:
+```bash
+pnpm storybook
+```
+
+This will open Storybook at [http://localhost:6006](http://localhost:6006).
+
+Stories work offline with mock data and don't require internet access. You can view different component states:
+- **CharacterCard** - Default, without image, unknown species
+- **CharacterList** - Default (with data), Loading, Error states
+- **PaginationControls** - Default, middle page, last page, many pages
+
 ## Architecture Decisions
 
 See the `docs/` directory for Architectural Decision Records (ADRs):
 - `0001-use-graphql-codegen.md` - Decision to use GraphQL Code Generator
 - `0002-use-shadcn-ui.md` - Decision to use shadcn/ui for components
+- `0003-use-storybook.md` - Decision to use Storybook for component development

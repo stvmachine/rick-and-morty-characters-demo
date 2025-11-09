@@ -3,21 +3,23 @@ import { PaginationControls } from "@/components/PaginationControls";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  GetCharactersDocument,
-  type GetCharactersQuery,
-} from "@/generated/graphql";
-import { useQuery } from "@apollo/client/react";
-import { useState } from "react";
+import type { GetCharactersQuery } from "@/generated/graphql";
 
-export function CharacterList() {
-  const [page, setPage] = useState(1);
-  const { data, loading, error } = useQuery<GetCharactersQuery>(
-    GetCharactersDocument,
-    {
-      variables: { page },
-    }
-  );
+interface CharacterListProps {
+  data?: GetCharactersQuery;
+  loading: boolean;
+  error?: { message: string };
+  currentPage: number;
+  onPageChange: (page: number) => void;
+}
+
+export function CharacterList({
+  data,
+  loading,
+  error,
+  currentPage,
+  onPageChange,
+}: CharacterListProps) {
 
   const characters =
     data?.characters?.results?.filter(
@@ -70,10 +72,10 @@ export function CharacterList() {
       </div>
 
       <PaginationControls
-        currentPage={page}
+        currentPage={currentPage}
         totalCount={totalCount}
         pageSize={pageSize}
-        onPageChange={setPage}
+        onPageChange={onPageChange}
       />
     </>
   );

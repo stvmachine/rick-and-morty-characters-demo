@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# Rick and Morty Character Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript application that fetches and displays characters from the Rick & Morty GraphQL API with pagination support.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎨 Modern UI built with shadcn/ui components
+- 🔍 Type-safe GraphQL queries using Apollo Client
+- 📄 Automatic TypeScript type generation from GraphQL schema
+- ⚡ Fast development with Vite
+- 🎯 Pagination support (20 characters per page)
+- 💫 Loading states and error handling
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Apollo Client** - GraphQL client
+- **GraphQL Code Generator** - Auto-generate TypeScript types
+- **shadcn/ui** - UI component library
+- **Tailwind CSS** - Styling
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 18+ 
+- pnpm 10+
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Install dependencies:
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Generate GraphQL types:
+```bash
+pnpm codegen
 ```
+
+3. Start the development server:
+```bash
+pnpm dev
+```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+## Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm preview` - Preview production build
+- `pnpm lint` - Run ESLint
+- `pnpm codegen` - Generate TypeScript types from GraphQL schema
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── ui/          # shadcn/ui components
+│   └── CharacterList.tsx
+├── generated/       # Auto-generated GraphQL types
+├── queries/         # GraphQL query files
+├── lib/             # Utility functions
+└── main.tsx         # App entry point
+```
+
+## GraphQL API
+
+This app uses the [Rick and Morty GraphQL API](https://rickandmortyapi.com/graphql).
+
+## Architecture Decisions
+
+See the `docs/` directory for Architectural Decision Records (ADRs):
+- `0001-use-graphql-codegen.md` - Decision to use GraphQL Code Generator
+- `0002-use-shadcn-ui.md` - Decision to use shadcn/ui for components

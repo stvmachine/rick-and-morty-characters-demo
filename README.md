@@ -2,6 +2,8 @@
 
 A React + TypeScript application that fetches and displays characters from the Rick & Morty GraphQL API with pagination support.
 
+🌐 **Live Demo**: [View App](https://stvmachine.github.io/rick-and-morty-characters-demo/) | [View Storybook](https://stvmachine.github.io/rick-and-morty-characters-demo/storybook/)
+
 ## Features
 
 - 🎨 Modern UI built with shadcn/ui components
@@ -128,8 +130,10 @@ The following testing approaches are not currently implemented but could be adde
 
 This project is automatically deployed to GitHub Pages on every push to the `main` branch.
 
-- **App**: Available at the repository's GitHub Pages URL (root)
-- **Storybook**: Available at `/storybook` subdirectory
+### Live Demo
+
+- **App**: [https://stvmachine.github.io/rick-and-morty-characters-demo/](https://stvmachine.github.io/rick-and-morty-characters-demo/)
+- **Storybook**: [https://stvmachine.github.io/rick-and-morty-characters-demo/storybook/](https://stvmachine.github.io/rick-and-morty-characters-demo/storybook/)
 
 The deployment is handled by a GitHub Actions workflow:
 - `.github/workflows/deploy-app.yml` - Builds and deploys both the Vite app and Storybook
@@ -147,3 +151,4 @@ See the `docs/` directory for Architectural Decision Records (ADRs):
 - `0002-use-shadcn-ui.md` - Decision to use shadcn/ui for components
 - `0003-use-storybook.md` - Decision to use Storybook for component development
 - `0004-use-vitest-and-react-testing-library.md` - Decision to use Vitest and React Testing Library
+- `0005-use-github-pages.md` - Decision to use GitHub Pages for deployment

@@ -25,6 +25,7 @@ const config: StorybookConfig = {
       const tailwindcss = await import('@tailwindcss/vite');
       config.plugins.push(tailwindcss.default());
     }
+    // Set base path for GitHub Pages deployment
     config.base = '/storybook/';
     return config;
   },

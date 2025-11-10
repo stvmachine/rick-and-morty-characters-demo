@@ -51,6 +51,10 @@ jobs:
           mkdir -p dist/storybook
           cp -r storybook-static/* dist/storybook/
 
+      - name: Create .nojekyll file
+        run: |
+          touch dist/.nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

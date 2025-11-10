@@ -124,6 +124,22 @@ The following testing approaches are not currently implemented but could be adde
 - GraphQL query mocking (using MSW or Apollo Client mocks)
 - Integration tests for full user flows
 
+## Deployment
+
+This project is automatically deployed to GitHub Pages on every push to the `main` branch.
+
+- **App**: Available at the repository's GitHub Pages URL (root)
+- **Storybook**: Available at `/storybook` subdirectory
+
+The deployment is handled by a GitHub Actions workflow:
+- `.github/workflows/deploy-app.yml` - Builds and deploys both the Vite app and Storybook
+
+### Setting up GitHub Pages
+
+1. Go to repository Settings > Pages
+2. Under "Source", select "GitHub Actions"
+3. The workflows will automatically deploy on push to `main`
+
 ## Architecture Decisions
 
 See the `docs/` directory for Architectural Decision Records (ADRs):

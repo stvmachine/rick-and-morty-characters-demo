@@ -25,6 +25,7 @@ const config: StorybookConfig = {
       const tailwindcss = await import('@tailwindcss/vite');
       config.plugins.push(tailwindcss.default());
     }
+    config.base = '/storybook/';
     return config;
   },
 };

@@ -26,7 +26,9 @@ const config: StorybookConfig = {
       config.plugins.push(tailwindcss.default());
     }
     // Set base path for GitHub Pages deployment
-    config.base = '/storybook/';
+    // Use environment variable for production, default to /storybook/ for local dev
+    const basePath = process.env.VITE_BASE_PATH || '/';
+    config.base = basePath === '/' ? '/storybook/' : `${basePath}storybook/`;
     return config;
   },
 };

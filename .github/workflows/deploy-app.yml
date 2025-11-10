@@ -41,9 +41,13 @@ jobs:
         run: pnpm codegen
 
       - name: Build app
+        env:
+          VITE_BASE_PATH: /rick-and-morty-characters-demo/
         run: pnpm build
 
       - name: Build Storybook
+        env:
+          VITE_BASE_PATH: /rick-and-morty-characters-demo/
         run: pnpm build-storybook
 
       - name: Copy Storybook to dist
